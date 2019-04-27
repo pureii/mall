@@ -13,8 +13,10 @@ import {
   RECEIVE_GOODS,
   INCREMENT_FOOD_COUNT,
   DECREMENT_FOOD_COUNT,
+  RECEIVE_POSITION,
   CLEAR_CART,
   RECEIVE_SEARCH_SHOPS
+
 } from './mutation-types'
 
 export default {
@@ -74,6 +76,16 @@ export default {
     }
   },
 
+  /*
+  [RECEIVE_POSITION] (state, {food,afood}) {
+     state.longitude = food;
+     console.log("longitude"+state.longitude)
+     state.latitude = afood;
+    console.log("latitude"+state.latitude)
+   },
+  */
+
+
   [CLEAR_CART](state) {
 
     // 清除food中的count
@@ -84,5 +96,6 @@ export default {
 
   [RECEIVE_SEARCH_SHOPS](state, {searchShops}) {
     state.searchShops = searchShops
+
   },
 }

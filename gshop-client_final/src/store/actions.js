@@ -12,6 +12,7 @@ import {
   RECEIVE_INFO,
   INCREMENT_FOOD_COUNT,
   DECREMENT_FOOD_COUNT,
+  RECEIVE_POSITION,
   CLEAR_CART,
   RECEIVE_SEARCH_SHOPS
 } from './mutation-types'
@@ -29,9 +30,9 @@ import {
 
 export default {
   // 异步获取地址
-  async getAddress({commit, state}) {
+  async getAddress({commit}, {food,afood}) {
     // 发送异步ajax请求
-    const geohash = state.latitude + ',' + state.longitude
+    const geohash = afood + ',' + food
     const result = await reqAddress(geohash)
     // 提交一个mutation
     if (result.code === 0) {
@@ -39,6 +40,14 @@ export default {
       commit(RECEIVE_ADDRESS, {address})
     }
   },
+  /*
+
+    Position({commit},{food,afood}){
+      commit(RECEIVE_POSITION,{food,afood})
+    },
+  */
+
+
 
   // 异步获取食品分类列表
   async getCategorys({commit}) {
@@ -124,6 +133,8 @@ export default {
       commit(DECREMENT_FOOD_COUNT, {food})
     }
   },
+
+
 
   // 同步清空购物车
   clearCart({commit}) {
